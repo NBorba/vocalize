@@ -20,9 +20,9 @@ internal class RecorderUiStateTest {
     }
 
     @Test
-    fun `when state is Paused, mainButtonIcon returns Record icon`() {
+    fun `when state is Paused, mainButtonIcon returns Play icon`() {
         val uiState = RecorderUiState(state = RecorderState.Paused)
 
-        assertEquals(VocalizeIcons.Record, uiState.mainButtonIcon)
+        assertEquals(VocalizeIcons.Play, uiState.mainButtonIcon)
     }
 }
