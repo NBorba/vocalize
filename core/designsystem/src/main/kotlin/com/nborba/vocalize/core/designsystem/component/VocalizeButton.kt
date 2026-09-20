@@ -11,9 +11,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
@@ -320,6 +322,37 @@ fun VocalizeCircularButton(
     }
 }
 
+/**
+ * Small Circular Action Button (e.g. secondary action controls like stop, cancel, or bookmark).
+ */
+@Composable
+fun VocalizeFilledIconButton(
+    icon: ImageVector,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    contentDescription: String? = null,
+    containerColor: Color = MaterialTheme.colorScheme.primary,
+    contentColor: Color = contentColorFor(containerColor),
+) {
+    FilledIconButton(
+        onClick = onClick,
+        modifier = modifier,
+        enabled = enabled,
+        shape = CircleShape,
+        colors =
+            IconButtonDefaults.filledIconButtonColors(
+                containerColor = containerColor,
+                contentColor = contentColor,
+            ),
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = contentDescription,
+        )
+    }
+}
+
 @ThemePreviews
 @Composable
 private fun VocalizeButtonsPreview() {
@@ -390,6 +423,10 @@ private fun VocalizeButtonsPreview() {
                 )
                 VocalizeCircularButton(
                     icon = VocalizeIcons.Pause,
+                    onClick = {},
+                )
+                VocalizeFilledIconButton(
+                    icon = VocalizeIcons.Stop,
                     onClick = {},
                 )
             }
