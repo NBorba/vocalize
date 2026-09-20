@@ -8,6 +8,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:audio"))
     implementation(project(":core:permission"))
     implementation(project(":feature:recorder-api"))
 }
